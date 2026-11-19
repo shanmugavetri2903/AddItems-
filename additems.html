@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Item Management</title>
+</head>
+<body>
+
+    <h2>My Item List</h2>
+
+    <input type="text" id="itemInput"
+           placeholder="Enter an item">
+
+    <button onclick="addItem()">Add</button>
+
+    <h3>Items:</h3>
+
+    <ul id="itemList"></ul>
+
+    <script>
+        // Create an empty array
+        let items = [];
+
+        function addItem() {
+
+            // Get the input value
+            let item = document.getElementById("itemInput").value;
+
+            // Check whether input is empty
+            if (item.trim() === "") {
+                alert("Please enter an item!");
+                return;
+            }
+
+            // Add item to the array
+            items.push(item);
+
+            // Update the unordered list
+            displayItems();
+
+            // Clear the input field
+            document.getElementById("itemInput").value = "";
+        }
+
+        function displayItems() {
+
+            let list = document.getElementById("itemList");
+
+            // Clear the existing list
+            list.innerHTML = "";
+
+            // Display all array elements
+            items.forEach(function(item) {
+
+                let li = document.createElement("li");
+
+                li.textContent = item;
+
+                list.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>
+
